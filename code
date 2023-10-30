@@ -1,0 +1,31 @@
+#!/bin/bash
+
+echo "Enter a string:"
+read input_string
+
+# Initialize counters for alphabets, digits, and special characters
+alphabets=0
+digits=0
+special_characters=0
+
+# Iterate through each character in the input string
+for ((i = 0; i < ${#input_string}; i++)); do
+    char="${input_string:$i:1}"
+
+    # Check if the character is an alphabet
+    if [[ $char =~ [A-Za-z] ]]; then
+        alphabets=$((alphabets + 1))
+    # Check if the character is a digit
+    elif [[ $char =~ [0-9] ]]; then
+        digits=$((digits + 1))
+    # If it's not an alphabet or digit, consider it a special character
+    else
+        special_characters=$((special_characters + 1))
+    fi
+done
+
+# Display the counts
+echo "Alphabets = $alphabets"
+echo "Digits = $digits"
+echo "Special characters = $special_characters"
+
